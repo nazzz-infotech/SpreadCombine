@@ -32,7 +32,7 @@ $ npm run dev
 
 ```powershell
 # For windows
-$env:CSC_LINK="./cert\NazzInfotechCert.pfx"
+$env:CSC_LINK="./cert\NazzzInfotechCert.pfx"
 $env:CSC_KEY_PASSWORD="1234"
 npm run build:win
 ```
