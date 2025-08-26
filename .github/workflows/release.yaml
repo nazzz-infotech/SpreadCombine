@@ -28,9 +28,10 @@ jobs:
       - name: Install Snapcraft (Linux only)
         if: matrix.os == 'ubuntu-latest'
         run: |
-          sudo apt-get update
-          sudo apt-get install -y snapd
-          sudo snap install snapcraft --classic
+          SNAPCRAFT_VERSION=7.3.3
+          curl -L https://github.com/snapcore/snapcraft/releases/download/$SNAPCRAFT_VERSION/snapcraft-$SNAPCRAFT_VERSION-linux-amd64.tar.gz -o snapcraft.tar.gz
+          sudo tar -xzf snapcraft.tar.gz -C /usr/local/bin --strip-components=1
+          snapcraft --version
 
       - name: Build App
         run: |
