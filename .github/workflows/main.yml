@@ -1,4 +1,4 @@
-name: Build/release SpreadCombine
+name: duplicated workflow 
 
 on:
   push:
