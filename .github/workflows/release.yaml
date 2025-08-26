@@ -29,9 +29,11 @@ jobs:
         if: matrix.os == 'ubuntu-latest'
         run: npm run build:linux
 
-      - name: build-mac
-        if: matrix.os == 'macos-latest'
-        run: npm run build:mac
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          check-latest: true
 
       - name: build-win
         if: matrix.os == 'windows-latest'
