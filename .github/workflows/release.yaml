@@ -4,9 +4,6 @@ on:
   push:
     tags:
       - v*.*.*
-  master:
-    tags:
-      - v*.*.*
 
 jobs:
   release:
