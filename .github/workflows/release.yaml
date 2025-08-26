@@ -27,11 +27,16 @@ jobs:
 
       - name: Build Linux
         if: matrix.os == 'ubuntu-latest'
-        run: npm run build:linux
+        run: | 
+          snap install snapcraft --classic
+          npm run build:linux
 
       - name: Build Windows
         if: matrix.os == 'windows-latest'
-        run: npm run build:win
+        run: |
+          $env:CSC_LINK="./cert\NazzzInfotechCert.pfx"
+          $env:CSC_KEY_PASSWORD="1234"
+          npm run build:win
 
       - name: Build macOS
         if: matrix.os == 'macos-latest'
