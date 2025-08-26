@@ -1,0 +1,52 @@
+body {
+  background-color: #e9ffed;
+}
+
+.main_container {
+  width: 100%;
+  height: 100%;
+}
+
+.selectedFileContainer {
+  padding: 5px;
+  border: darkgray 1.5px solid;
+  border-radius: 8px;
+  background-color: #daf1de;
+  max-height: 240px;
+  overflow: auto;
+}
+
+.finishDiv {
+   margin: 0 auto;
+   padding: 2px;
+   border: 1px darkgrey solid;
+   background-color: #feffea;
+   border-radius: 6px;
+   padding-top: 8px;
+   padding-bottom: 8px;
+   text-align: center;
+}
+
+.selectInfo {
+   margin: 0 auto;
+   padding: 2px;
+   border: 1px darkgrey solid;
+   background-color: #feffe1;
+   border-radius: 6px;
+   padding-top: 8px;
+   padding-bottom: 8px;
+   text-align: left;
+   padding-left: 10px;
+   color: #525252;
+}
+
+.fileSavedPathContainer {
+  padding: 5px;
+  background-color: #daf1de;
+  text-align: center;
+}
+
+.bottom_buttons_finish {
+  display: flex;
+  align-items: center;
+}
