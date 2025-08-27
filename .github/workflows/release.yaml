@@ -27,20 +27,22 @@ jobs:
 
       - name: Build Linux
         if: matrix.os == 'ubuntu-latest'
-        run: | 
+        run: |
           sudo snap install snapcraft --classic
           npm run build:linux
 
       - name: Build Windows
         if: matrix.os == 'windows-latest'
         run: |
-          cmd
-          cd cert
-          curl https://raw.githubusercontent.com/nazzz-infotech/SpreadCombine/refs/heads/master/cert/NazzInfotechCert.pfx -O
-          powershell
-          New-Item -ItemType Directory -Path cert
-          $env:CSC_LINK="./cert\NazzzInfotechCert.pfx"
-          $env:CSC_KEY_PASSWORD="1234"
+          # Recreate cert folder
+          mkdir cert
+
+          # Restore certificate from secret
+          echo "${{ secrets.WINDOWS_BUILD_CERT }}" | powershell -Command "[IO.File]::WriteAllBytes('cert/NazzzInfotechCert.pfx', [Convert]::FromBase64String((Get-Content -Raw -)))"
+
+          # Set environment variables for electron-builder
+          echo "CSC_LINK=cert/NazzzInfotechCert.pfx" >> $env:GITHUB_ENV
+          echo "CSC_KEY_PASSWORD=1234" >> $env:GITHUB_ENV
           npm run build:win
 
       - name: Build macOS
