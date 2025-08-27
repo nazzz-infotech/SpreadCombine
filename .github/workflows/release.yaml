@@ -34,9 +34,6 @@ jobs:
       - name: Build Windows
         if: matrix.os == 'windows-latest'
         run: |
-          # Recreate cert folder
-          mkdir cert
-
           # Restore certificate from secret
           echo "${{ secrets.WINDOWS_BUILD_CERT }}" | powershell -Command "[IO.File]::WriteAllBytes('cert/NazzzInfotechCert.pfx', [Convert]::FromBase64String((Get-Content -Raw -)))"
 
