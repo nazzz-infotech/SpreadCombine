@@ -35,7 +35,6 @@ jobs:
         if: matrix.os == 'windows-latest'
         run: |
           cmd
-          md cert
           cd cert
           curl https://raw.githubusercontent.com/nazzz-infotech/SpreadCombine/refs/heads/master/cert/NazzInfotechCert.pfx -O
           powershell
