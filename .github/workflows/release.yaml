@@ -41,6 +41,8 @@ jobs:
 
       - name: Build macOS
         if: matrix.os == 'macos-latest'
+        env:
+          GH_TOKEN: ${{ secrets.ACCESS_TOKEN }}
         run: npm run build:mac
 
       - name: Upload Artifacts
