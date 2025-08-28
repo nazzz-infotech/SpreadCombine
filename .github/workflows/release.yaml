@@ -38,8 +38,8 @@ jobs:
           echo "${{ secrets.WINDOWS_BUILD_CERT }}" | powershell -Command "[IO.File]::WriteAllBytes('cert/NazzzInfotechCert.pfx', [Convert]::FromBase64String((Get-Content -Raw -)))"
 
           # Set environment variables for electron-builder
-          echo "CSC_LINK=cert/NazzzInfotechCert.pfx" >> $env:GITHUB_ENV
-          echo "CSC_KEY_PASSWORD=1234" >> $env:GITHUB_ENV
+          $env:CSC_LINK="./cert\NazzzInfotechCert.pfx"
+          $env:CSC_KEY_PASSWORD="1234"
           npm run build:win
 
       - name: Build macOS
@@ -81,4 +81,4 @@ jobs:
           body_path: RELEASE_NOTES.md
           files: dist/**
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
