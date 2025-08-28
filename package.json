@@ -34,7 +34,13 @@
       "icon": "resources/macos_icons/icon.icns"
     },
     "linux": {
-      "icon": "resources/icon.png"
+      "icon": "resources/icon.png",
+      "target": [
+        "AppImage",
+        "deb",
+        "rpm",
+        "snap"
+      ]
     },
     "nsis": {
       "oneClick": false,
